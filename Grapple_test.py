@@ -1,7 +1,9 @@
 
 from hcsr04sensor import sensor
+from ultrasonic_sensor import Sensor
+from Displacement_calc import MeasurementController
 
-class fish:
+class Fish:
     def __init__(self,water_level_change,density,lenth_of_box,width_of_box):
         """ fish class """
         self.water_level_change = water_level_change
@@ -25,13 +27,14 @@ class fish:
 
 
 
-class container:
+class Container:
     def __init__(self,lenth,width):
         """ container class """
         self.lenth = lenth
         self.width = width
         self.fish_in_box = []
         self.water_level = 0
+        self.sensors = []
         
     def __repr__(self):
         return f"CONTAINER({self.lenth}*{self.width})({self.water_level})"
@@ -39,25 +42,23 @@ class container:
     def __str__(self):
         return f"this container has a lenth of {self.lenth}m and a width of {self.width}m and water level {self.water_level}m"
     
-    def get_water_level(self,pin_in,pin_out):
+    def get_water_level(self,rounds: int):
         """ do this """
-        mes = sensor.Measurement(pin_in,pin_out)
+        self.measurment.gattling_gun(rounds)
         
         dis = mes.raw_distance()
         return int(f"{dis:.3f}")
     
-    def add_fish(self,density,water_rise):
+    def add_fish(self,density,rounds:int):
         """ adds fish to box """
-        self.water_level += water_rise
+        level_before = self.water_level
+        self.get_water_level(rounds)
+        level_after = self.water_level
+        water_rise = water_before - water_after
         self.fish_in_box.append(fish(water_rise,density,self.lenth,self.width))
         
+    def add_sensor(self,pins: tuple):
+        self.sensors.append(Sensor(pins))
         
-harrys_boat = container(0.1,0.1)
-print(harrys_boat)
-
-harrys_boat.get_water_level(0.3)
-
-harrys_boat.add_fish(1000,0.01)
-for fish in harrys_boat.fish_in_box:
-    fish.Calc_weight()
-    print(fish)
+    def add_controller(self):
+        self.measurment = MeasurementController(self.sensors)
