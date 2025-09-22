@@ -1,4 +1,6 @@
 
+from hcsr04sensor import sensor
+
 class fish:
     def __init__(self,water_level_change,density,lenth_of_box,width_of_box):
         """ fish class """
@@ -37,9 +39,12 @@ class container:
     def __str__(self):
         return f"this container has a lenth of {self.lenth}m and a width of {self.width}m and water level {self.water_level}m"
     
-    def get_water_level(self,water_level):
+    def get_water_level(self,pin_in,pin_out):
         """ do this """
-        self.water_level = water_level
+        mes = sensor.Measurement(pin_in,pin_out)
+        
+        dis = mes.raw_distance()
+        return int(f"{dis:.3f}")
     
     def add_fish(self,density,water_rise):
         """ adds fish to box """
