@@ -1,10 +1,4 @@
-from hcsr04sensor import sensor
-
-class Sensor:
-    def __init__(self, sensor_pins:tuple) -> None:
-        self.sensor_module = sensor.Measurement(*sensor_pins)
-    def scan(self) -> float:
-        return self.sensor_module.raw_distance()
+from ultrasonic_sensor import Sensor
 
 class MeasurementController:
     def __init__(self, sensors: list[Sensor]) -> None:
@@ -21,8 +15,3 @@ class MeasurementController:
         
         avg = sum(distances) / len(distances)
         return avg, distances
-
-a = Sensor((23, 24))
-b = Sensor((20, 21))
-c = MeasurementController([a, b])
-print(c.gattling_gun(5))
