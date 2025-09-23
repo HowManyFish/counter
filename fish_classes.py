@@ -77,7 +77,7 @@ class Container:
         self.measurment = MeasurementController(self.sensors)
 
     def total_weight(self):
-        self.get_water_level()
+        self.get_water_level(1)
         change = self.water_level - self.calabrated_level
         a = Fish(change,1000,self.lenth,self.width,)
         self.weight = a.Calc_weight()
