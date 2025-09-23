@@ -12,6 +12,5 @@ def send_data(token,org,url,bucket,weight):
             .tag("Device", "Pi")
             .field("Weight", weight)
         )
-    )
 
     write_api.write(bucket=bucket, org=org, record=point)
