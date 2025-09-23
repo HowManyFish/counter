@@ -6,7 +6,7 @@ import os
 token = os.environ.get("INFLUXDB_TOKEN")
 org = "fishy"
 url = "https://us-central1-1.gcp.cloud2.influxdata.com"
-bucket="Test"
+bucket="FishyData"
 
 box = Container(0.55,0.40)
 box.add_sensor((24,23))
