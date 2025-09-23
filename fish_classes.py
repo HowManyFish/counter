@@ -77,7 +77,7 @@ class Container:
 
     def total_weight(self,rounds):
         self.get_water_level(rounds)
-        change = (self.water_level - self.calabrated_level)/100
+        change = (self.water_level - self.calabrated_level)/10
         a = Fish(change,1000,self.lenth,self.width,)
         a.Calc_weight()
         self.weight = a.weight
