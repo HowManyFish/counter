@@ -27,8 +27,8 @@ class Transmitter:
             Point("Weight")
                 .tag("Device", self.device_name)
                 .field("Weight", weight_fish)
-                .field("Water Level", water_level)
                 .field("Total Weight", weight_total)
+                #.field("Water Level", water_level)
             )
 
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)
