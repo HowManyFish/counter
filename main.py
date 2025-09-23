@@ -1,5 +1,6 @@
 from Grapple_test import Container,Fish
 from influx_db import send_data
+from time import sleep
 
 token = os.environ.get("INFLUXDB_TOKEN")
 org = "fishy"
@@ -11,7 +12,8 @@ box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
 box.get_water_level(5)
-_ = input("push enter when fish is in")
+print("and now fish")
+sleep(10)
 box.add_fish(2700,5)
 
 for fish in box.fish_in_box:
