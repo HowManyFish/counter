@@ -47,8 +47,6 @@ class Container:
         mes,_ = self.measurment.gattling_gun(rounds)
         self.water_level= mes
         
-        dis = mes.raw_distance()
-        return int(f"{dis:.3f}")
     
     def add_fish(self,density,rounds:int):
         """ adds fish to box """
