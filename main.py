@@ -12,13 +12,12 @@ box = Container(0.55,0.40)
 box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
-box.zero_sensor(1)
+box.zero_sensor(5)
 
 while True:
-    box.get_water_level(1)
+    box.get_water_level(5)
     print("and now fish")
-    sleep(10)
-    box.add_fish(2700,1)
+    box.add_fish(2700,5)
     box.total_weight()
 
     trans = Transmitter(token,org,url,bucket,"Pi")
