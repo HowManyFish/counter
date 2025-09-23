@@ -42,7 +42,7 @@ class Container:
         self.water_level = 0
         self.sensors = []
         self.measurment = None
-        self.calabrated_level = None
+        self.calabrated_level = 0.0
         self.weight = 0
 
     def __repr__(self):
@@ -57,9 +57,8 @@ class Container:
         self.water_level= mes
 
     def zero_sensor(self,rounds):
-        level = self.get_water_level(rounds)
-        self.calabrated_level = level
-        self.water_level = level
+        self.get_water_level(rounds)
+        self.calabrated_level = self.water_level
         
     
     def add_fish(self,density,rounds:int):
