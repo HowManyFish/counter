@@ -58,7 +58,7 @@ class Container:
 
     def zero_sensor(self):
         level = self.get_water_level()
-        self.calabrated_level() = level
+        self.calabrated_level = level
         self.water_level = level
         
     
