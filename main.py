@@ -12,10 +12,10 @@ box = Container(0.55,0.40)
 box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
-box.get_water_level(5)
+box.get_water_level(1)
 print("and now fish")
 sleep(10)
-box.add_fish(2700,5)
+box.add_fish(2700,1)
 
 for fish in box.fish_in_box:
     fish.Calc_weight()
