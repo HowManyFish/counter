@@ -12,7 +12,7 @@ box = Container(0.55,0.40)
 box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
-box.zero_sensor()
+box.zero_sensor(1)
 
 while True:
     box.get_water_level(1)

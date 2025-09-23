@@ -56,8 +56,8 @@ class Container:
         mes,_ = self.measurment.gattling_gun(rounds)
         self.water_level= mes
 
-    def zero_sensor(self):
-        level = self.get_water_level()
+    def zero_sensor(self,rounds):
+        level = self.get_water_level(rounds)
         self.calabrated_level = level
         self.water_level = level
         
