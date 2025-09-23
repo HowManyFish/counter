@@ -1,6 +1,7 @@
 from Grapple_test import Container,Fish
 from influx_db import send_data
 from time import sleep
+import os
 
 token = os.environ.get("INFLUXDB_TOKEN")
 org = "fishy"
