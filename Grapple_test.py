@@ -35,7 +35,7 @@ class Container:
         self.fish_in_box = []
         self.water_level = 0
         self.sensors = []
-        
+        self.measurment = None
     def __repr__(self):
         return f"CONTAINER({self.lenth}*{self.width})({self.water_level})"
     
