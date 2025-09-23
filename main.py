@@ -1,5 +1,5 @@
 from Grapple_test import Container,Fish
-from influx_db import send_data
+from influx_db import Transmitter
 from time import sleep
 import os
 
@@ -17,7 +17,10 @@ print("and now fish")
 sleep(10)
 box.add_fish(2700,1)
 
+trans = Transmitter(token,org,url,bucket,"Pi")
+trans.initalise_conection()
+
 for fish in box.fish_in_box:
     fish.Calc_weight()
     print(fish)
-    send_data(token,org,url,bucket,fish.weight)
+    trans.send_data(fish.weight)
