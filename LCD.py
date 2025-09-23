@@ -1,17 +1,11 @@
-from luma.core.interface.serial import spi
-from luma.oled.device import ssd1306
-from luma.core.render import canvas
-import time
+from RPLCD.gpio import CharLCD
+import RPi.GPIO as GPIO
 
-serial = spi(port=0, device=0, gpio_DC=25, gpio_RST=5, gpio_CS=8)
-device = ssd1306(serial, width=128, height=64)
+lcd = CharLCD(numbering_mode=GPIO.BCM,
+              cols=16, rows=2,
+              pin_rs=5, pin_e=6,
+              pins_data=[12, 13, 19, 26])
 
-# Fill screen completely
-device.clear()
-with canvas(device) as draw:
-    draw.rectangle(device.bounding_box, outline="white", fill="white")
-
-time.sleep(5)
-
-# Clear screen
-device.clear()
+# Example: display numbers
+lcd.clear()
+lcd.write_string('Number: 1234')
