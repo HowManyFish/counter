@@ -1,17 +1,17 @@
 from luma.core.interface.serial import spi
 from luma.oled.device import ssd1306
 from luma.core.render import canvas
+import time
 
-# Explicit 4-wire SPI setup
-serial = spi(
-    port=0,           # SPI bus
-    device=0,         # CE0
-    gpio_DC=25,       # Data/Command
-    gpio_RST=5,       # Reset
-    gpio_CS=8         # Chip select
-)
-
+serial = spi(port=0, device=0, gpio_DC=25, gpio_RST=5, gpio_CS=8)
 device = ssd1306(serial, width=128, height=64)
 
+# Fill screen completely
+device.clear()
 with canvas(device) as draw:
-    draw.text((30, 25), "1234", fill="white")
+    draw.rectangle(device.bounding_box, outline="white", fill="white")
+
+time.sleep(5)
+
+# Clear screen
+device.clear()
