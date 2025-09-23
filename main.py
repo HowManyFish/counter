@@ -1,6 +1,6 @@
 from Grapple_test import Container,Fish
 
-box = Container(55,40)
+box = Container(0.55,0.40)
 box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
