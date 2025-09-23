@@ -26,4 +26,5 @@ while True:
     for fish in box.fish_in_box:
         fish.Calc_weight()
         print(fish)
+        print(box.weight)
         trans.send_data(fish.weight,box.water_level,box.weight)
