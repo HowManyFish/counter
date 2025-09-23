@@ -20,8 +20,14 @@ class Fish:
     
     def Calc_weight(self):
         """ clculates weight of fish with box peramiters and density of fish """
+        print(f"water_level_change,{self.water_level_change}")
+        print(f"length,{self.lenth}")
+        print(f"width,{self.width}")
         volume = self.water_level_change*self.lenth*self.width
+        print(f"volume,{volume}")
+        print(f"density,{self.density}")
         weight = self.density*volume
+        print(f"weight,{weight}")
         self.weight = weight       
 
 
@@ -53,7 +59,7 @@ class Container:
         level_before = self.water_level
         self.get_water_level(rounds)
         level_after = self.water_level
-        water_rise = (level_before - level_after)/100
+        water_rise = (level_before - level_after) * 0.01
         self.fish_in_box.append(Fish(water_rise,density,self.lenth,self.width))
         
     def add_sensor(self,pins: tuple):
