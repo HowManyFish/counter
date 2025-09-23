@@ -26,7 +26,7 @@ class Transmitter:
         point = (
             Point("Weight")
                 .tag("Device", self.device_name)
-                .field("Weight", weight_fish)
+                .field("Weight", weight_total)
                 .field("Total Weight", weight_total)
                 #.field("Water Level", water_level)
             )
