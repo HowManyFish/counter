@@ -17,7 +17,7 @@ box.zero_sensor(5)
 while True:
     box.get_water_level(5)
     print("and now fish")
-    box.add_fish(2700,5)
+    box.add_fish(1000,5)
     box.total_weight()
 
     trans = Transmitter(token,org,url,bucket,"Pi")
