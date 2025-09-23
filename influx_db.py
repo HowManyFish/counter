@@ -19,14 +19,16 @@ class Transmitter:
 
         self.write_api = client.write_api(write_options=SYNCHRONOUS)
 
-    def send_data(self,weight):
+    def send_data(self,weight_fish,water_level,weight_total):
         """send the data to the Database"""
         print("function running")
 
         point = (
             Point("Weight")
                 .tag("Device", self.device_name)
-                .field("Weight", weight)
+                .field("Weight", weight_fish)
+                .feild("Water Level", water_level)
+                .feild("Total Weight", weight_total)
             )
 
         self.write_api.write(bucket=self.bucket, org=self.org, record=point)

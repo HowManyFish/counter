@@ -1,4 +1,4 @@
-from Grapple_test import Container,Fish
+from fish_classes import Container,Fish
 from influx_db import Transmitter
 from time import sleep
 import os
@@ -12,15 +12,19 @@ box = Container(0.55,0.40)
 box.add_sensor((24,23))
 box.add_sensor((21,20))
 box.add_controller()
-box.get_water_level(1)
-print("and now fish")
-sleep(10)
-box.add_fish(2700,1)
+box.zero_sensor()
 
-trans = Transmitter(token,org,url,bucket,"Pi")
-trans.initalise_conection()
+while True:
+    box.get_water_level(1)
+    print("and now fish")
+    sleep(10)
+    box.add_fish(2700,1)
+    box.total_weight()
 
-for fish in box.fish_in_box:
-    fish.Calc_weight()
-    print(fish)
-    trans.send_data(fish.weight)
+    trans = Transmitter(token,org,url,bucket,"Pi")
+    trans.initalise_conection()
+
+    for fish in box.fish_in_box:
+        fish.Calc_weight()
+        print(fish)
+        trans.send_data(fish.weight,box.water_level,box.weight)

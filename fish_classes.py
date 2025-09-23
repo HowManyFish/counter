@@ -42,6 +42,9 @@ class Container:
         self.water_level = 0
         self.sensors = []
         self.measurment = None
+        self.calabrated_level = None
+        self.weight = 0
+
     def __repr__(self):
         return f"CONTAINER({self.lenth}*{self.width})({self.water_level})"
     
@@ -52,6 +55,11 @@ class Container:
         """ do this """
         mes,_ = self.measurment.gattling_gun(rounds)
         self.water_level= mes
+
+    def zero_sensor(self):
+        level = self.get_water_level()
+        self.calabrated_level() = level
+        self.water_level = level
         
     
     def add_fish(self,density,rounds:int):
@@ -67,3 +75,9 @@ class Container:
         
     def add_controller(self):
         self.measurment = MeasurementController(self.sensors)
+
+    def total_weight(self):
+        self.get_water_level()
+        change = self.water_level - self.calabrated_level
+        a = Fish(change,1000,self.lenth,self.width,)
+        self.weight = a.Calc_weight()
