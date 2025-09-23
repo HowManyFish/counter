@@ -43,7 +43,7 @@ class Container:
         self.sensors = []
         self.measurment = None
         self.calabrated_level = 0.0
-        self.weight = 0
+        self.weight = 0.0
 
     def __repr__(self):
         return f"CONTAINER({self.lenth}*{self.width})({self.water_level})"

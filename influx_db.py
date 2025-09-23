@@ -19,7 +19,7 @@ class Transmitter:
 
         self.write_api = client.write_api(write_options=SYNCHRONOUS)
 
-    def send_data(self,weight_fish,water_level,weight_total):
+    def send_data(self,weight_fish,water_level,weight_total: float):
         """send the data to the Database"""
         print("function running")
 
