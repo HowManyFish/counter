@@ -44,7 +44,8 @@ class Container:
     
     def get_water_level(self,rounds: int):
         """ do this """
-        self.measurment.gattling_gun(rounds)
+        mes,_ = self.measurment.gattling_gun(rounds)
+        self.water_level= mes
         
         dis = mes.raw_distance()
         return int(f"{dis:.3f}")
@@ -54,8 +55,8 @@ class Container:
         level_before = self.water_level
         self.get_water_level(rounds)
         level_after = self.water_level
-        water_rise = water_before - water_after
-        self.fish_in_box.append(fish(water_rise,density,self.lenth,self.width))
+        water_rise = (level_before - level_after)/100
+        self.fish_in_box.append(Fish(water_rise,density,self.lenth,self.width))
         
     def add_sensor(self,pins: tuple):
         self.sensors.append(Sensor(pins))
