@@ -1,5 +1,6 @@
 import influxdb_client, random
 from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client.rest import ApiException
 from influxdb_client.client.write_api import SYNCHRONOUS
 from urllib3.exceptions import ReadTimeoutError
 
@@ -31,9 +32,12 @@ class Transmitter:
                 .field("Water Level", round(float(water_level),6))
             )
 
-        while True:
+        for i in range(10):
             try:
                 self.write_api.write(bucket=self.bucket, org=self.org, record=point)
                 break
-            except ReadTimeoutError as error:
-                print(f"Requrest Timeout\n{error}")
+            except (ApiException, ReadTimeoutError) as error:
+                print(f"Requrest Error\n{error}")
+
+        print("Failed to continue max retries met")
+        exit(1)
