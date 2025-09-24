@@ -8,5 +8,5 @@ class Sensor:
     def scan(self) -> float:
         try:
             return self.sensor_module.raw_distance()
-        except Error as e:
+        except:
             print(f"sensor Error: Pins {self.sensor_pins}")
