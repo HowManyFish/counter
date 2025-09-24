@@ -2,6 +2,7 @@ from fish_classes import Container,Fish
 from influx_db import Transmitter
 from time import sleep
 import os
+from LED import led_on
 
 token = os.environ.get("INFLUXDB_TOKEN")
 org = "fishy"
@@ -16,7 +17,7 @@ box.zero_sensor(5)
 
 while True:
     box.get_water_level(5)
-    print("and now fish")
+    led_on(0.5)
     box.add_fish(1000,5)
     box.total_weight(5)
 
