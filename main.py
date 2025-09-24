@@ -10,7 +10,7 @@ bucket="FishyData"
 
 box = Container(0.55,0.40)
 box.add_sensor((24,23))
-box.add_sensor((21,20))
+box.add_sensor((22,27))
 box.add_controller()
 box.zero_sensor(5)
 
