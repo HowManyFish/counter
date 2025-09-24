@@ -17,7 +17,7 @@ box.zero_sensor(5)
 
 while True:
     box.get_water_level(5)
-    led_on(0.5)
+    led_on(1)
     box.add_fish(1000,5)
     box.total_weight(5)
 
