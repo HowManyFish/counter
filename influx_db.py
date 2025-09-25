@@ -31,7 +31,7 @@ class Transmitter:
                 .tag("Device", self.device_name)
                 .field("circular_mean_height", round(float(circular_mean_height),6))
                 .field("raw_height", raw_height)
-                .time(int(time.time()*10^9), write_precision=WritePrecision.NS)
+                .time(int(time.time()*10**9), write_precision=WritePrecision.NS)
             )
 
         if len(self.points) == 10:
