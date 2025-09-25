@@ -24,8 +24,6 @@ class Transmitter:
 
     def send_data(self, circular_mean_height: float, raw_height: float, inital_calabration: float) -> None:
         """send the data to the Database"""
-        print("function running")
-
         self.points.append(
             Point("height")
                 .tag("device_name", self.device_name)
