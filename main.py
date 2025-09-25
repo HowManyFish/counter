@@ -11,6 +11,8 @@ transmitter = Transmitter(
     device_name = "Pi"
 )
 
+transmitter.initalise_conection()
+
 box = Box(
     sensors = [
         Sensor((24, 23)),
