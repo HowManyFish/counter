@@ -3,8 +3,8 @@ from led_flash import led_on
 from influx_db import Transmitter
 
 class Box:
-    def __init__(self, sensors: list[Sensor], mesurement_history_len: int) -> None:
-        self.sensors: list[Sensor] = sensors
+    def __init__(self, sensors: list, mesurement_history_len: int) -> None:
+        self.sensors: list = sensors
         self.sensor_calabrations: list[float] = list()
         self.mesurement_history_len = mesurement_history_len
         self.mesurement_history: list[list[float]] = list()
