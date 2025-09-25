@@ -40,7 +40,7 @@ class Box:
 
             print(self.mesurement_history)
             print(sensor_number)
-            print(self.mesurement_history > self.mesurement_history_len)
+            print(len(self.mesurement_history) > self.mesurement_history_len)
             while len(self.mesurement_history[sensor_number]) > self.mesurement_history_len:
                 self.mesurement_history.pop(0)
 
