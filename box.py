@@ -1,6 +1,7 @@
 from ultrasonic_sensor import Sensor, averaged_scan
 from led_flash import led_on
 from influx_db import Transmitter
+from statistics import mean
 
 class Box:
     def __init__(self, sensors: list, mesurement_history_len: int) -> None:
