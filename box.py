@@ -40,7 +40,7 @@ class Box:
             if len(self.mesurement_history) > self.mesurement_history_len:
                 self.mesurement_history[sensor_number].pop(0)
 
-            print(len(self.mesurement_history))
+            print(self.mesurement_history)
 
             self.mesurement_history[sensor_number].insert(self.mesurement_history_len, scan)
 
