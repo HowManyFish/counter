@@ -28,7 +28,8 @@ class Transmitter:
 
         self.points.append(
             Point("height")
-            .tag("device_name", self.device_name).tag("inital_calabration", inital_calabration)
+                .tag("device_name", self.device_name)
+                .field("inital_calabration", inital_calabration)
                 .field("circular_mean_height", round(float(circular_mean_height),6))
                 .field("raw_height", raw_height)
                 .time(int(time.time()*10**9), write_precision=WritePrecision.NS)
@@ -39,6 +40,7 @@ class Transmitter:
             for i in range(10):
                 try:
                     self.write_api.write(bucket=self.bucket, org=self.org, record=self.points)
+                    self.points = list()
                     return
                 except (ApiException, ReadTimeoutError) as error:
                     print(f"Requrest Error\n{error}")
