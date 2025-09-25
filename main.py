@@ -21,7 +21,7 @@ box = Box(
         Sensor((24, 23)),
         Sensor((22, 27))
     ],
-    mesurement_history_len = 3
+    mesurement_history_len = 12
 )
 
 box.calabrate_sensors(5)
