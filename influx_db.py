@@ -34,7 +34,7 @@ class Transmitter:
                 .time(time.time())
             )
 
-        if len(self.points) == 30:
+        if len(self.points) == 10:
             for i in range(10):
                 try:
                     self.write_api.write(bucket=self.bucket, org=self.org, record=self.points)
