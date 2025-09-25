@@ -35,6 +35,7 @@ class Transmitter:
             )
 
         if len(self.points) == 10:
+            print("\n sending data\n")
             for i in range(10):
                 try:
                     self.write_api.write(bucket=self.bucket, org=self.org, record=self.points)
