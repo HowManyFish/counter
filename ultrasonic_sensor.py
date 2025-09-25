@@ -1,7 +1,7 @@
 from hcsr04sensor import sensor
 from statistics import mean
 
-def averaged_scan(sensors: list[Sensor], number_scans: int) -> list[(float, list[float])]:
+def averaged_scan(sensors: list, number_scans: int) -> list[(float, list[float])]:
     output: list[(float, list[float])] = list()
 
     for scan in range(number_scans):
