@@ -35,7 +35,7 @@ class Transmitter:
         for i in range(10):
             try:
                 self.write_api.write(bucket=self.bucket, org=self.org, record=point)
-                break
+                return
             except (ApiException, ReadTimeoutError) as error:
                 print(f"Requrest Error\n{error}")
 
