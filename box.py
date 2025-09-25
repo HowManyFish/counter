@@ -22,6 +22,8 @@ class Box:
         sensor_calabrations = averaged_scan(self.sensors, number_scans)
         self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
 
+        self.mesurement_history.append(list())
+
     def scan(self, transmitter: Transmitter) -> None:
         """
         scans for water height level
@@ -35,11 +37,11 @@ class Box:
             scan = sensor.scan()
 
             if len(self.mesurement_history) > self.mesurement_history_len:
-                self.mesurement_history.pop(0)
+                self.mesurement_history[sensor_number].pop(0)
 
-            self.mesurement_history.insert(sensor_number, scan)
+            self.mesurement_history[sensor_number].append(scan)
 
-            circular_mean_height.append(mean(self.mesurement_history))
+            circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
             raw_height.append(scan)
 
         led_on(0.5) # NOTE: flashes indecator led may slow speed of application due to blocking nature
