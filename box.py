@@ -39,9 +39,10 @@ class Box:
             scan = sensor.scan()
 
             print(self.mesurement_history)
+            print(len(self.mesurement_history))
             print(sensor_number)
             print(len(self.mesurement_history) > self.mesurement_history_len)
-            while len(self.mesurement_history[sensor_number]) > self.mesurement_history_len:
+            if len(self.mesurement_history) > self.mesurement_history_len:
                 self.mesurement_history.pop(0)
 
             self.mesurement_history[sensor_number].insert(self.mesurement_history_len, scan)
