@@ -42,7 +42,7 @@ class Box:
 
             print(len(self.mesurement_history))
 
-            self.mesurement_history[sensor_number].append(scan)
+            self.mesurement_history[sensor_number].insert(mesurement_history_len, scan)
 
             circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
             raw_height.append(scan)
