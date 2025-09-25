@@ -45,4 +45,4 @@ class Box:
 
         led_on(0.5) # NOTE: flashes indecator led may slow speed of application due to blocking nature
 
-        transmitter.send_data(mean(circular_mean_height), mean(raw_height))
+        transmitter.send_data(mean(circular_mean_height), mean(raw_height), mean(self.sensor_calabrations))

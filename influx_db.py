@@ -22,13 +22,13 @@ class Transmitter:
 
         self.write_api = client.write_api(write_options=SYNCHRONOUS)
 
-    def send_data(self, circular_mean_height: float, raw_height: float) -> None:
+    def send_data(self, circular_mean_height: float, raw_height: float, inital_calabration: float) -> None:
         """send the data to the Database"""
         print("function running")
 
         self.points.append(
             Point("height")
-                .tag("Device", self.device_name)
+            .tag("device_name", self.device_name).tag("inital_calabration", inital_calabration)
                 .field("circular_mean_height", round(float(circular_mean_height),6))
                 .field("raw_height", raw_height)
                 .time(int(time.time()*10**9), write_precision=WritePrecision.NS)
