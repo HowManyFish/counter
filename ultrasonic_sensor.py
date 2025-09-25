@@ -4,7 +4,7 @@ from statistics import mean
 def averaged_scan(sensors: list, number_scans: int) -> list[(float, list[float])]:
     output: list[(float, list[float])] = list()
 
-    for i in len(sensors):
+    for i in range(len(sensors)):
         output.insert(i, (0.0, list()))
 
     for scan in range(number_scans):
