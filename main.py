@@ -6,7 +6,7 @@ transmitter = Transmitter(
     token = os.environ.get("INFLUXDB_TOKEN"),
     org = "fishy",
     url = "https://us-central1-1.gcp.cloud2.influxdata.com",
-    bucket="FishyData",
+    bucket="FishyDataV2",
     device_name = "Pi"
 )
 
