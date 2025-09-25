@@ -1,7 +1,7 @@
 from box import Box
 from ultrasonic_sensor import Sensor
 from influx_db import Transmitter
-from led_flash import led_off
+from led_flash import led_off, led_on
 import os
 
 led_off() # NOTE: makes sure the led is off
