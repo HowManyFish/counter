@@ -21,5 +21,7 @@ box = Box(
     mesurement_history_len = 5
 )
 
+box.sensor_calabrations(5)
+
 while True:
     box.scan(transmitter)

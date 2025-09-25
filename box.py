@@ -10,7 +10,7 @@ class Box:
         self.mesurement_history_len = mesurement_history_len
         self.mesurement_history: list[list[float]] = list()
 
-    def calabrate_sensors(self) -> None:
+    def calabrate_sensors(self, number_scans: int) -> None:
         """
         sensor calabarations:
 
@@ -20,7 +20,7 @@ class Box:
             print("self.sensors must have atleast one sensor")
 
         for sensor in self.sensors:
-            sensor_calabrations = averaged_scan(self.sensors, 5)
+            sensor_calabrations = averaged_scan(self.sensors, number_scans)
             self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
 
     def scan(self, transmitter: Transmitter) -> None:
