@@ -1,4 +1,4 @@
-import influxdb_client, random, datetime
+import influxdb_client, random, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.rest import ApiException
 from influxdb_client.client.write_api import SYNCHRONOUS
