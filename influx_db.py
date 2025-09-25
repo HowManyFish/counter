@@ -1,4 +1,4 @@
-import influxdb_client, random
+import influxdb_client, random, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.rest import ApiException
 from influxdb_client.client.write_api import SYNCHRONOUS
@@ -31,6 +31,7 @@ class Transmitter:
                 .tag("Device", self.device_name)
                 .field("circular_mean_height", round(float(circular_mean_height),6))
                 .field("raw_height", raw_height)
+                .time(time.time())
             )
 
         if len(self.points) == 30:
