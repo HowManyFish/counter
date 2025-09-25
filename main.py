@@ -1,31 +1,22 @@
-from fish_classes import Container,Fish
+from box import Box
+from ultrasonic_sensor import Sensor
 from influx_db import Transmitter
-from time import sleep
-import os
-from LED import led_on
 
-token = os.environ.get("INFLUXDB_TOKEN")
-org = "fishy"
-url = "https://us-central1-1.gcp.cloud2.influxdata.com"
-bucket="FishyData"
+transmitter = Transmitter(
+    token = os.environ.get("INFLUXDB_TOKEN"),
+    org = "fishy",
+    url = "https://us-central1-1.gcp.cloud2.influxdata.com",
+    bucket="FishyData",
+    device_name = "Pi"
+)
 
-box = Container(0.55,0.40)
-box.add_sensor((24,23))
-box.add_sensor((22,27))
-box.add_controller()
-box.zero_sensor(5)
+box = Box(
+    sensors = [
+        Sensor((24, 23)),
+        Sensor((22, 27))
+    ],
+    mesurement_history_len = 5
+)
 
 while True:
-    box.get_water_level(5)
-    led_on(1)
-    box.add_fish(1000,5)
-    box.total_weight(5)
-
-    trans = Transmitter(token,org,url,bucket,"Pi")
-    trans.initalise_conection()
-
-    for fish in box.fish_in_box:
-        fish.Calc_weight()
-        print(fish)
-        print(box.weight)
-        trans.send_data(fish.weight,box.water_level,box.weight)
+    box.scan(transmitter)
