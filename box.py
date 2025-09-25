@@ -22,7 +22,7 @@ class Box:
         sensor_calabrations = averaged_scan(self.sensors, number_scans)
         self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
 
-        for _ in len(self.sensors):
+        for _ in self.sensors:
             self.mesurement_history.append(list())
 
     def scan(self, transmitter: Transmitter) -> None:
