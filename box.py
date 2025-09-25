@@ -40,8 +40,6 @@ class Box:
             if len(self.mesurement_history) > self.mesurement_history_len:
                 self.mesurement_history[sensor_number].pop(0)
 
-            print(self.mesurement_history)
-
             self.mesurement_history[sensor_number].append(scan)
 
             circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
