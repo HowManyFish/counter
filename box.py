@@ -33,20 +33,19 @@ class Box:
         """
         raw_height: list[float] = list()
         circular_mean_height: list[float] = list()
+        led_on()
 
         for sensor_number, sensor in enumerate(self.sensors):
             scan = sensor.scan()
 
-            if len(self.mesurement_history) > self.mesurement_history_len:
+            if len(self.mesurement_history) < self.mesurement_history_len:
                 self.mesurement_history[sensor_number].pop(0)
-
-            print(self.mesurement_history)
 
             self.mesurement_history[sensor_number].insert(self.mesurement_history_len, scan)
 
             circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
             raw_height.append(scan)
 
-        led_on(0.5) # NOTE: flashes indecator led may slow speed of application due to blocking nature
+        led_off() # NOTE: flashes indecator led may slow speed of application due to blocking nature
 
         transmitter.send_data(mean(circular_mean_height), mean(raw_height), mean(self.sensor_calabrations))
