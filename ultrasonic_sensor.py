@@ -21,6 +21,6 @@ class Sensor:
 
     def scan(self) -> float:
         try:
-            return self.sensor_module.raw_distance()
+            return (self.sensor_module.raw_distance() / 100)
         except:
             print(f"sensor Error: Pins {self.sensor_pins}")
