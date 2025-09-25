@@ -38,6 +38,7 @@ class Box:
         for sensor_number, sensor in enumerate(self.sensors):
             scan = sensor.scan()
 
+            print(self.mesurement_history)
             while len(self.mesurement_history[sensor_number]) > self.mesurement_history_len:
                 self.mesurement_history.pop(0)
 
