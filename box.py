@@ -19,9 +19,8 @@ class Box:
         if len(self.sensors) < 1:
             print("self.sensors must have atleast one sensor")
 
-        for sensor in self.sensors:
-            sensor_calabrations = averaged_scan(self.sensors, number_scans)
-            self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
+        sensor_calabrations = averaged_scan(self.sensors, number_scans)
+        self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
 
     def scan(self, transmitter: Transmitter) -> None:
         """
