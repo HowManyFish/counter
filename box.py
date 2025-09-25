@@ -38,11 +38,8 @@ class Box:
         for sensor_number, sensor in enumerate(self.sensors):
             scan = sensor.scan()
 
-            while len(self.mesurement_history) > self.mesurement_history_len:
+            while len(self.mesurement_history[sensor_number]) > self.mesurement_history_len:
                 self.mesurement_history.pop(0)
-
-            print(f"{len(self.mesurement_history) > self.mesurement_history_len}: {self.mesurement_history} :{self.mesurement_history_len}")
-
 
             self.mesurement_history[sensor_number].insert(self.mesurement_history_len, scan)
 
