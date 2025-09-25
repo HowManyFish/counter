@@ -66,7 +66,7 @@ class Container:
         level_before = self.water_level
         self.get_water_level(rounds)
         level_after = self.water_level
-        water_rise = (level_before - level_after) * 0.01
+        water_rise = (level_before - level_after)
         self.fish_in_box.append(Fish(water_rise,density,self.lenth,self.width))
         
     def add_sensor(self,pins: tuple):
@@ -77,7 +77,8 @@ class Container:
 
     def total_weight(self,rounds):
         self.get_water_level(rounds)
-        change = (self.water_level - self.calabrated_level)/10
+        change = (self.water_level - self.calabrated_level)
         a = Fish(change,1000,self.lenth,self.width,)
         a.Calc_weight()
+
         self.weight = a.weight
