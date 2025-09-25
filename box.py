@@ -39,7 +39,7 @@ class Box:
         for sensor_number, sensor in enumerate(self.sensors):
             scan = sensor.scan()
 
-            self.mesurement_history[sensor_number].append(self.mesurement_history_len, scan)
+            self.mesurement_history[sensor_number].append(scan)
 
             circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
             raw_height.append(scan)
