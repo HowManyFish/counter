@@ -1,5 +1,5 @@
 from ultrasonic_sensor import Sensor, averaged_scan
-from led_flash import led_on
+from led_flash import led_on, led_off
 from influx_db import Transmitter
 from statistics import mean
 
