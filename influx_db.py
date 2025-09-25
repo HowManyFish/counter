@@ -6,7 +6,7 @@ from urllib3.exceptions import ReadTimeoutError
 
 class Transmitter:
 
-    def __init__(self,token,org,url,bucket,device_name):
+    def __init__(self, token: str, org: str, url: str, bucket: str, device_name: str) -> None:
 
         self.token = token
         self.org = org
@@ -14,6 +14,7 @@ class Transmitter:
         self.bucket = bucket
         self.write_api = None
         self.device_name = device_name
+        self.points: list[Point] = list()
 
     def initalise_conection(self):
         """ connect to the database """
@@ -21,23 +22,24 @@ class Transmitter:
 
         self.write_api = client.write_api(write_options=SYNCHRONOUS)
 
-    def send_data(self,weight_fish,water_level,weight_total: float):
+    def send_data(self, circular_mean_height: float, raw_height: float) -> None:
         """send the data to the Database"""
         print("function running")
 
-        point = (
-            Point("Weight")
+        self.points.append(
+            Point("height")
                 .tag("Device", self.device_name)
-                .field("Weight Total", round(float(weight_total),6))
-                .field("Water Level", round(float(water_level),6))
+                .field("circular_mean_height", round(float(circular_mean_height),6))
+                .field("raw_height", raw_height)
             )
 
-        for i in range(10):
-            try:
-                self.write_api.write(bucket=self.bucket, org=self.org, record=point)
-                return
-            except (ApiException, ReadTimeoutError) as error:
-                print(f"Requrest Error\n{error}")
+        if len(self.points) == 30:
+            for i in range(10):
+                try:
+                    self.write_api.write(bucket=self.bucket, org=self.org, record=self.points)
+                    return
+                except (ApiException, ReadTimeoutError) as error:
+                    print(f"Requrest Error\n{error}")
 
-        print("Failed to continue max retries met")
-        exit(1)
+            print("Failed to continue max retries met")
+            exit(1)
