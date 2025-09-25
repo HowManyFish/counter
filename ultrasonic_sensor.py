@@ -15,7 +15,7 @@ def averaged_scan(sensors: list, number_scans: int) -> list[(float, list[float])
     print(output)
 
     for index, sensor_scan in enumerate(output):
-        output.insert(index, (mean(sensor_scan[1]), sensor_scan[1]))
+        output[index] = (mean(sensor_scan[1]), sensor_scan[1])
     print(output)
 
     return output
