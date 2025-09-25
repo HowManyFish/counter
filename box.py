@@ -2,13 +2,14 @@ from ultrasonic_sensor import Sensor, averaged_scan
 from led_flash import led_on, led_off
 from influx_db import Transmitter
 from statistics import mean
+from collections import deque
 
 class Box:
     def __init__(self, sensors: list, mesurement_history_len: int) -> None:
         self.sensors: list = sensors
         self.sensor_calabrations: list[float] = list()
         self.mesurement_history_len = mesurement_history_len
-        self.mesurement_history: list[list[float]] = list()
+        self.mesurement_history: list[deque[float]] = list()
 
     def calabrate_sensors(self, number_scans: int) -> None:
         """
@@ -23,7 +24,7 @@ class Box:
         self.sensor_calabrations = [scan[0] for scan in sensor_calabrations]
 
         for _ in self.sensors:
-            self.mesurement_history.append(list())
+            self.mesurement_history.append(deque(maxlen=self.mesurement_history_len))
 
     def scan(self, transmitter: Transmitter) -> None:
         """
@@ -38,14 +39,7 @@ class Box:
         for sensor_number, sensor in enumerate(self.sensors):
             scan = sensor.scan()
 
-            print(self.mesurement_history)
-            print(len(self.mesurement_history))
-            print(sensor_number)
-            print(len(self.mesurement_history) > self.mesurement_history_len)
-            if len(self.mesurement_history) > self.mesurement_history_len:
-                self.mesurement_history.pop(0)
-
-            self.mesurement_history[sensor_number].insert(self.mesurement_history_len, scan)
+            self.mesurement_history[sensor_number].append(self.mesurement_history_len, scan)
 
             circular_mean_height.append(mean(self.mesurement_history[sensor_number]))
             raw_height.append(scan)
