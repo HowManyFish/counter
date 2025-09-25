@@ -1,6 +1,7 @@
 from box import Box
 from ultrasonic_sensor import Sensor
 from influx_db import Transmitter
+import os
 
 transmitter = Transmitter(
     token = os.environ.get("INFLUXDB_TOKEN"),
